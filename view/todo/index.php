@@ -19,6 +19,8 @@
 				<a id="task" href="<?=URL?>todo/edit/<?=$task['id']?>" >
 					<?=$task['todo']?>
 					<a id="delete" href="<?=URL?>todo/delete/<?=$task['id']?>">
+						<i class="fa fa-check" id="check" aria-hidden="true"></i>
+						|
 						<i class="fa fa-trash" id="trash" aria-hidden="true"></i>
 					</a>
 				</a>

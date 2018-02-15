@@ -28,6 +28,11 @@ h1
     text-align: center;
 }
 
+h2
+{
+    color: white;
+}
+
 #task, #delete
 {
     background-color: unset;
@@ -86,6 +91,11 @@ td
 #trash
 {
     color: red;
+}
+
+#check
+{
+    color: LawnGreen;
 }
 
 a
