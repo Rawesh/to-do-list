@@ -1,0 +1,33 @@
+body
+{
+	background-color: black;
+}
+
+fieldset
+{
+	width: 400px;
+	margin: auto;
+	background-color: lightgray;
+	border-radius: 10%;
+}
+
+header
+{
+ 	font-weight: bold;
+ 	font-size: 20px;
+}
+
+hr
+{
+	text-align: center;
+}
+
+p
+{
+	color: black;
+}
+
+a
+{
+	text-decoration: none;
+}

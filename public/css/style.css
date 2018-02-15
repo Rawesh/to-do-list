@@ -1,0 +1,119 @@
+body
+{
+    background-image: url("paper.gif");
+    background-color: #cccccc;
+    display: flex;
+    flex-direction: column;
+}
+
+nav
+{
+	background-color: black;
+	opacity: 0.8;
+	padding: 10px;
+}
+
+article
+{
+    margin: 1% auto;
+    padding: 10px;
+    width: 500px;
+    font-size: 25px;
+    background-color: black;
+}
+
+h1
+{
+    background-color: cyan;
+    text-align: center;
+}
+
+#task, #delete
+{
+    background-color: unset;
+    border: unset;
+    padding: unset;
+    color: unset;
+    margin-right: unset; 
+    text-decoration: none;
+}
+
+#task:hover
+{
+    color: blue;
+}
+
+#date
+{
+    color: blue;
+}
+
+table
+{
+    width: 500px;
+}
+
+tr
+{
+    display: flex;
+    flex-direction: column;
+}
+
+td:nth-child(odd) {
+    background: #E6E6FA;
+}
+
+td:nth-child(even) {
+    background: #FFF0F5;
+}
+
+td 
+{
+    padding: 8px;
+    text-align: left;
+    border-bottom: 3px solid blue;
+    border-left: 3px solid red; 
+    display: flex;
+    flex-direction: row;
+}
+
+#delete
+{
+   position: absolute;
+   right: 450px;
+}
+
+#trash
+{
+    color: red;
+}
+
+a
+{
+	background-color: green;
+	border:solid 1px;
+	padding: 5px;
+	color: white;
+	margin-right: 10px;
+}
+
+a:hover
+{
+	background-color: red  ;
+}
+
+
+button  
+{
+    margin: 5px;
+    font-size: 30px;
+    border-radius: 10%;
+    background-color: gray;
+    border: solid 2px;
+}
+
+button:hover
+{
+    background-color: black;
+    color: white;
+}
