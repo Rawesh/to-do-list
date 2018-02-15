@@ -6,8 +6,14 @@
 			<i class="fa fa-plus" aria-hidden="true"></i>
 			Nieuw
 		</a>
-	</nav>
 
+		<a id="logout" href="<?=URL?>login/logout">
+			<i class="fa fa-sign-out" aria-hidden="true"></i>
+			Log uit
+		</a>
+	</nav>
+<?php var_dump($users);
+	var_dump($_SESSION['id']); ?>
 	<article>
 		<h1>To Do List:</h1>
 

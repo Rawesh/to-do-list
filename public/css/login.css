@@ -1,0 +1,25 @@
+body{
+	background-color: black;
+}
+
+fieldset{
+	width: 400px;
+	margin: auto;
+	background-color: lightblue;
+	opacity: 0.8;
+	border-radius: 10%;
+}
+
+#form1{
+	text-align: center;
+}
+
+#form2{
+	text-align: center;
+}
+
+a
+{
+	text-decoration: none;
+	color: black;
+}

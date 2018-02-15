@@ -2,10 +2,12 @@
 session_start();
 
 require(ROOT . "model/ToDoModel.php");
+require(ROOT . "model/loginModel.php");
 
 function index()
 {
-	render("todo/index", array("tasks" => getAllTasks()));
+	render("todo/index", array("tasks" => getAllTasks(),
+								"users" => getAll()));
 }
 
 //create template

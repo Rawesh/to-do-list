@@ -13,6 +13,14 @@ nav
 	padding: 10px;
 }
 
+#logout
+{
+    background-color: red;
+    position: absolute;
+    right: 8px;
+    top: 11px;
+}
+
 article
 {
     margin: 1% auto;
