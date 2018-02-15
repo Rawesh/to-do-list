@@ -4,9 +4,10 @@
  {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM todolists";
+	$sql = "SELECT * FROM todolists WHERE users_id = :uid";
 	$query = $db->prepare($sql);
-	$query->execute();
+	$query->execute(array(
+			'uid' => $_SESSION['id']));
 
 	return $query->fetchAll();
 
@@ -19,16 +20,19 @@ function createTask()
 
 	//set post in task
 	$task = isset($_POST['todo']) ? $_POST['todo'] : NULL;
+	$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
 
 	if (strlen($task) == 0)
 	{
 		return false;
 	}
  
-	$sql = "INSERT INTO todolists (todo) VALUES (:t)";
+	$sql = "INSERT INTO todolists (todo, users_id) VALUES (:t, :uid)";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		':t' => $task ));
+		':t' => $task,
+		':uid' => $user_id
+		 ));
 
 	return true;
 
