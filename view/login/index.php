@@ -32,3 +32,5 @@
 		</form>
 	</fieldset>
 </article>
+
+<script src="<?= URL ?>js/alert.js"></script>

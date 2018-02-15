@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="<?= URL ?>css/style.css">
 <script src="https://use.fontawesome.com/25eaac5d3c.js"></script>
+<!-- <?php foreach ($users as $user) { ?>
+	<?php if ($user['id'] = $_SESSION['id'] ) { ?>
+	<?php } ?>
+<?php } ?> -->
+
 
 	<nav>
 		<a  href="<?=URL?>todo/create">
@@ -12,8 +17,7 @@
 			Log uit
 		</a>
 	</nav>
-<?php var_dump($users);
-	var_dump($_SESSION['id']); ?>
+
 	<article>
 		<h1>To Do List:</h1>
 

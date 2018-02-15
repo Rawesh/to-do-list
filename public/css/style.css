@@ -32,8 +32,19 @@ article
 
 h1
 {
+    animation: colorchange 50s; /* animation-name followed by duration in seconds*/
+    /* you could also use milliseconds (ms) or something like 2.5s */
     background-color: cyan;
     text-align: center;
+}
+
+@keyframes colorchange
+{
+  0%   {color: red;}
+  25%  {color: orange;}
+  50%  {color: purple;}
+  75%  {color: lightgreen;}
+  100% {color: red;}
 }
 
 h2
