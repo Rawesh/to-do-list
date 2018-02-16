@@ -1,36 +1,37 @@
 <?php
 
- function getAllTasks($id)
+ function getAllLists()
  {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM todolists WHERE lists_id = :lid";
+	$sql = "SELECT * FROM lists WHERE users_id = :uid";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-			':lid' => $id));
+			'uid' => $_SESSION['id']));
 
 	return $query->fetchAll();
 
 	$db = null;
 }
 
-function createTask($id)
+function createList()
 {
 	$db = openDatabaseConnection();
 
 	//set post in task
-	$task = isset($_POST['todo']) ? $_POST['todo'] : NULL;
+	$list = isset($_POST['listName']) ? $_POST['listName'] : NULL;
+	$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
 
-	if (strlen($task) == 0)
+	if (strlen($list) == 0)
 	{
 		return false;
 	}
  
-	$sql = "INSERT INTO todolists (todo, lists_id) VALUES (:t, :lid)";
+	$sql = "INSERT INTO lists (listName, users_id) VALUES (:l, :uid)";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		':t' => $task,
-		':lid' => $id
+		':l' => $list,
+		':uid' => $user_id
 		));
 
 	return true;
@@ -38,11 +39,11 @@ function createTask($id)
 	$db = null;
 }
 
-function getTask($id) 
+function getList($id) 
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM todolists WHERE id = :id";
+	$sql = "SELECT * FROM lists WHERE id = :id";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':id' => $id));
@@ -53,37 +54,36 @@ function getTask($id)
 
 }
 
-function editTask($list_id)
+function editList()
 {
 	$db = openDatabaseConnection();
 
-	//set post in task
-	$task = isset($_POST['todo']) ? $_POST['todo'] : NULL;
+	//set post in list
+	$list = isset($_POST['listName']) ? $_POST['listName'] : NULL;
 	$id = isset($_POST['id']) ? $_POST['id'] : NULL;
 
-	if (strlen($task) == 0)
+	if (strlen($list) == 0)
 	{
 		return false;
 	}
 
-	$sql = "UPDATE todolists SET `todo` = :t WHERE id = :id AND lists_id = :lid";
+	$sql = "UPDATE lists SET `listName` = :l WHERE id = :id";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		':t' => $task,
-		':id' => $id,
-		':lid' => $list_id));
+		':l' => $list,
+		':id' => $id));
 
 	$db = null;
 	
 	return true;
 }
 
-function deleteTask($id)
+function deleteList($id)
 {
 	$db = openDatabaseConnection();
 
-	$sql = "DELETE FROM todolists WHERE id=:id";
+	$sql = "DELETE FROM lists WHERE id=:id";
 	
 	$query = $db->prepare($sql);
 	$query->execute(array(

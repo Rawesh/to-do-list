@@ -13,12 +13,30 @@ nav
 	padding: 10px;
 }
 
+section
+{
+    display: flex;
+    flex-direction: column;
+    margin: 1% auto;
+    padding: 10px;
+    width: 500px;
+    font-size: 25px;
+    background-color: black;
+}
+
+b
+{
+    color: yellow;
+    margin-left: 35%;
+    font-size: 20px;
+}
+
 #logout
 {
     background-color: red;
     position: absolute;
     right: 8px;
-    top: 11px;
+    top: 15px;
 }
 
 article
@@ -49,10 +67,10 @@ h1
 
 h2
 {
-    color: white;
+    color: orange;
 }
 
-#task, #delete
+#task, #delete, #list, #getIn
 {
     background-color: unset;
     border: unset;
@@ -62,7 +80,7 @@ h2
     text-decoration: none;
 }
 
-#task:hover
+#task:hover, #list:hover
 {
     color: blue;
 }
@@ -70,6 +88,16 @@ h2
 #date
 {
     color: blue;
+}
+
+#back
+{
+    background-color: red
+}
+
+#runList
+{
+    color: lawngreen;
 }
 
 table
@@ -115,6 +143,11 @@ td
 #check
 {
     color: LawnGreen;
+}
+
+#getIn
+{
+   margin-left: 71%;
 }
 
 a

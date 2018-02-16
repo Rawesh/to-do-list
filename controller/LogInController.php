@@ -2,7 +2,7 @@
 session_start();
 
 require(ROOT . "model/LogInModel.php");
-require(ROOT . "model/ToDoModel.php");
+require(ROOT . "model/ListModel.php");
 
 function index()
 {
@@ -31,7 +31,7 @@ function acces()
 		header("location:" . URL . "error/index");
 		exit();
 	}
-	render("todo/index", array("tasks" => getAllTasks(),
+	render("list/index", array("lists" => getAllLists(),
 								"users" => getAll()
 								));
 }
