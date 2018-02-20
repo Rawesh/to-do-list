@@ -1,13 +1,19 @@
 <?php
 
- function getAllTasks($id)
+ function getAllTasks($id, $sort)
  {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT *, DATE_FORMAT(start_date, '%d-%m-%Y') as 'start' ,DATE_FORMAT(end_date, '%d-%m-%Y') as 'end' FROM todolists WHERE lists_id = :lid";
+	$sql = 
+		"SELECT *, DATE_FORMAT(start_date, '%d-%m-%Y') as 'start' ,DATE_FORMAT(end_date, '%d-%m-%Y') as 'end'
+		 FROM todolists
+		 WHERE lists_id = :lid 
+		 ORDER BY 'end' :sort";
+		 
 	$query = $db->prepare($sql);
 	$query->execute(array(
-			':lid' => $id));
+			':lid' => $id,
+			':sort' => $sort));
 
 	return $query->fetchAll();
 

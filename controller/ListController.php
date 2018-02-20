@@ -11,9 +11,9 @@ function index()
 								"users" => getAll()));
 }
 
-function getTasksByList($id)
+function getTasksByList($id, $sort = "")
 {
-	render("todo/index", array("tasks" => getAllTasks($id),
+	render("todo/index", array("tasks" => getAllTasks($id, $sort),
 								"list" => getList($id)));
 }
 

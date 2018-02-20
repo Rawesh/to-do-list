@@ -23,10 +23,13 @@
 	<article>
 		<h1>To Do List: <?=$list['listName']?></h1>
 
-		<select>
-			<option value="date">Datum (oplopend)</option>
-			<option value="date(desc)">Datum (aflopend)</option>
-		</select>
+		<a id="filterButton" href="<?=URL?>todo/taskSort/<?=$list['id']?>/<?="ASC"?>">
+			Datum (oplopend)
+		</a>
+
+		<a id="filterButton" href="<?=URL?>todo/taskSort/<?=$list['id']?>/<?="DESC"?>">
+			Datum (aflopend)
+		</a>
 
 		<table>
 			<tr>
@@ -42,7 +45,7 @@
 					</a>
 				</a>
 			</td>
-			<td>Start: <?=$task['start']?> | Eind: <?=$task['end']?></td>
+			<td id="date">Start: <?=$task['start']?> | Eind: <?=$task['end']?></td>
 		<?php } ?>
 		
 			</tr>
@@ -52,5 +55,3 @@
 	<footer>
 		
 	</footer>
-
-<script src="<?= URL ?>js/sort.js"></script>

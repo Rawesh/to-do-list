@@ -5,6 +5,13 @@ require(ROOT . "model/ToDoModel.php");
 require(ROOT . "model/loginModel.php");
 require(ROOT . "model/ListModel.php");
 
+function taskSort($id, $sort)
+{
+	render("todo/index", array("tasks" => getAllTasks($id, $sort),
+								"list" => getList($id)
+								));
+}
+
 //create template
 function create($id)
 {
