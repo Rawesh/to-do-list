@@ -5,9 +5,9 @@ require(ROOT . "model/ToDoModel.php");
 require(ROOT . "model/loginModel.php");
 require(ROOT . "model/ListModel.php");
 
-function taskSort($id, $sort)
+function taskSortEnd($id, $column, $sort)
 {
-	render("todo/index", array("tasks" => getAllTasks($id, $sort),
+	render("todo/index", array("tasks" => sortTask($id, $column, $sort),
 								"list" => getList($id)
 								));
 }

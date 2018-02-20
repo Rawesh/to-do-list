@@ -23,12 +23,12 @@
 	<article>
 		<h1>To Do List: <?=$list['listName']?></h1>
 
-		<a id="filterButton" href="<?=URL?>todo/taskSort/<?=$list['id']?>/<?="ASC"?>">
-			Datum (oplopend)
+		<a id="filterButton" href="<?=URL?>todo/taskSortEnd/<?=$list['id']?>/<?="end"?>/<?="ASC"?>">
+			EindDatum (oplopend)
 		</a>
 
-		<a id="filterButton" href="<?=URL?>todo/taskSort/<?=$list['id']?>/<?="DESC"?>">
-			Datum (aflopend)
+		<a id="filterButton" href="<?=URL?>todo/taskSortEnd/<?=$list['id']?>/<?="end"?>/<?="DESC"?>">
+			EindDatum (aflopend)
 		</a>
 
 		<table>
@@ -37,7 +37,7 @@
  		<?php foreach ($tasks as $task) { ?>
 			<td>
 				<a id="task" href="<?=URL?>todo/edit/<?=$task['id']?>/<?=$list['id']?>" >
-					<?=$task['todo']?>:  
+					<?=$task['todo']?> - Status: <?=$task['status']?>  
 					<a id="delete" href="<?=URL?>todo/delete/<?=$task['id']?>/<?=$list['id']?>">
 						<i class="fa fa-check" id="check" aria-hidden="true"></i>
 						|
@@ -45,7 +45,7 @@
 					</a>
 				</a>
 			</td>
-			<td id="date">Start: <?=$task['start']?> | Eind: <?=$task['end']?></td>
+			<td id="date">Eind: <?=$task['end']?></td>
 		<?php } ?>
 		
 			</tr>

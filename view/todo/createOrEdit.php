@@ -17,6 +17,13 @@
 				<label>Naam taak</label>
 				<input type="text" name="todo" value="<?=$task['todo']?>">
 
+				<label>Status</label>
+				<select name="status" value="<?=$task['status']?>">
+					<option value="">Geen</option>
+					<option value="normaal">Normaal</option>
+					<option value="spoed">Spoed</option>
+				</select>
+
 				<label>Wijzig startdatum</label>
 				<input type="date" name="start_date" value="<?=$task['start_date']?>">
 
@@ -31,6 +38,12 @@
 			<form action="<?=URL?>todo/createSave/<?=$list['id']?>" method="post">
 				<label>Taak</label>
 				<input type="text" name="todo">
+				<label>Status</label>
+				<select name="status">
+					<option value="">Geen</option>
+					<option value="normaal">Normaal</option>
+					<option value="spoed">Spoed</option>
+				</select>
 				<label>Start datum</label>
 				<input type="date" name="start_date"">
 				<label>Eind datum</label>

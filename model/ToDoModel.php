@@ -1,6 +1,6 @@
 <?php
 
- function getAllTasks($id, $sort)
+ function getAllTasks($id)
  {
 	$db = openDatabaseConnection();
 
@@ -8,17 +8,36 @@
 		"SELECT *, DATE_FORMAT(start_date, '%d-%m-%Y') as 'start' ,DATE_FORMAT(end_date, '%d-%m-%Y') as 'end'
 		 FROM todolists
 		 WHERE lists_id = :lid 
-		 ORDER BY 'end' :sort";
-		 
+		 ORDER BY 'end'";
+
 	$query = $db->prepare($sql);
 	$query->execute(array(
-			':lid' => $id,
-			':sort' => $sort));
+			':lid' => $id));
 
 	return $query->fetchAll();
 
 	$db = null;
 }
+
+ function sortTask($id, $columm, $sort)
+ {
+	$db = openDatabaseConnection();
+
+	$sql = 
+		"SELECT *, DATE_FORMAT(start_date, '%d-%m-%Y') as 'start' ,DATE_FORMAT(end_date, '%d-%m-%Y') as 'end'
+		 FROM todolists
+		 WHERE lists_id = :lid 
+		 ORDER BY $columm $sort";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+			':lid' => $id));
+
+	return $query->fetchAll();
+
+	$db = null;
+}
+
 
 function createTask($id)
 {
@@ -26,23 +45,25 @@ function createTask($id)
 
 	//set post in task
 	$task = isset($_POST['todo']) ? $_POST['todo'] : NULL;
+	$status = isset($_POST['status']) ? $_POST['status'] : NULL;
 
 	$end_date = isset($_POST['end_date']) ? $_POST['end_date'] : NULL;
 	$start_date = isset($_POST['start_date']) ? $_POST['start_date'] : NULL;
 
 
-	if (strlen($task) == 0 || strlen($end_date) == 0 || strlen($start_date) == 0)
+	if (strlen($task) == 0 || strlen($end_date) == 0 || strlen($start_date) == 0 || strlen($status) == 0)
 	{
 		return false;
 	}
  
-	$sql = "INSERT INTO todolists (todo, start_date, end_date, lists_id)
-			VALUES (:t, :start_date, :end_date, :lid)";
+	$sql = "INSERT INTO todolists (todo, start_date, end_date, status, lists_id)
+			VALUES (:t, :start_date, :end_date, :status, :lid)";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':t' => $task,
 		':start_date' => $start_date,
 		':end_date' => $end_date,
+		':status' => $status,
 		':lid' => $id
 		));
 
@@ -72,16 +93,19 @@ function editTask($list_id)
 
 	//set post in task
 	$task = isset($_POST['todo']) ? $_POST['todo'] : NULL;
+	$status = isset($_POST['status']) ? $_POST['status'] : NULL;
 	$end_date = isset($_POST['end_date']) ? $_POST['end_date'] : NULL;
 	$start_date = isset($_POST['start_date']) ? $_POST['start_date'] : NULL;
 	$id = isset($_POST['id']) ? $_POST['id'] : NULL;
 
-	$sql = "UPDATE todolists SET `todo` = :t, `end_date` = :end_date, `start_date` = :start_date
+	$sql = "UPDATE todolists 
+			SET `todo` = :t, `status` = :s, `end_date` = :end_date, `start_date` = :start_date
 			 WHERE id = :id AND lists_id = :lid";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':t' => $task,
+		':s' => $status,
 		':start_date' => $start_date,
 		':end_date' => $end_date,
 		':id' => $id,
