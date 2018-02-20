@@ -28,7 +28,7 @@ function createSave()
 {
 	if (!createList())
 	{
-		render("error/index");
+		render("error/setSaveError");
 		exit();
 	}
 
@@ -49,7 +49,7 @@ function editSave()
 		exit();
 	}
 
-		header("location:". URL . "error/index");
+		header("location:". URL . "error/setSaveError");
 
 }
 
@@ -60,6 +60,6 @@ function delete($id)
 		exit();
 	}
 
-		header("location:". URL . "error/index");
+		header("location:". URL . "error/setSaveError");
 }
 

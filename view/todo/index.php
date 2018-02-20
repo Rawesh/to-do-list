@@ -23,13 +23,18 @@
 	<article>
 		<h1>To Do List: <?=$list['listName']?></h1>
 
+		<select>
+			<option value="date">Datum (oplopend)</option>
+			<option value="date(desc)">Datum (aflopend)</option>
+		</select>
+
 		<table>
 			<tr>
 
  		<?php foreach ($tasks as $task) { ?>
 			<td>
 				<a id="task" href="<?=URL?>todo/edit/<?=$task['id']?>/<?=$list['id']?>" >
-					<?=$task['todo']?>
+					<?=$task['todo']?>:  
 					<a id="delete" href="<?=URL?>todo/delete/<?=$task['id']?>/<?=$list['id']?>">
 						<i class="fa fa-check" id="check" aria-hidden="true"></i>
 						|
@@ -37,6 +42,7 @@
 					</a>
 				</a>
 			</td>
+			<td>Start: <?=$task['start']?> | Eind: <?=$task['end']?></td>
 		<?php } ?>
 		
 			</tr>
@@ -46,3 +52,5 @@
 	<footer>
 		
 	</footer>
+
+<script src="<?= URL ?>js/sort.js"></script>

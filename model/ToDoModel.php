@@ -4,7 +4,7 @@
  {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM todolists WHERE lists_id = :lid";
+	$sql = "SELECT *, DATE_FORMAT(start_date, '%d-%m-%Y') as 'start' ,DATE_FORMAT(end_date, '%d-%m-%Y') as 'end' FROM todolists WHERE lists_id = :lid";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 			':lid' => $id));
@@ -21,15 +21,22 @@ function createTask($id)
 	//set post in task
 	$task = isset($_POST['todo']) ? $_POST['todo'] : NULL;
 
-	if (strlen($task) == 0)
+	$end_date = isset($_POST['end_date']) ? $_POST['end_date'] : NULL;
+	$start_date = isset($_POST['start_date']) ? $_POST['start_date'] : NULL;
+
+
+	if (strlen($task) == 0 || strlen($end_date) == 0 || strlen($start_date) == 0)
 	{
 		return false;
 	}
  
-	$sql = "INSERT INTO todolists (todo, lists_id) VALUES (:t, :lid)";
+	$sql = "INSERT INTO todolists (todo, start_date, end_date, lists_id)
+			VALUES (:t, :start_date, :end_date, :lid)";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':t' => $task,
+		':start_date' => $start_date,
+		':end_date' => $end_date,
 		':lid' => $id
 		));
 
@@ -59,18 +66,18 @@ function editTask($list_id)
 
 	//set post in task
 	$task = isset($_POST['todo']) ? $_POST['todo'] : NULL;
+	$end_date = isset($_POST['end_date']) ? $_POST['end_date'] : NULL;
+	$start_date = isset($_POST['start_date']) ? $_POST['start_date'] : NULL;
 	$id = isset($_POST['id']) ? $_POST['id'] : NULL;
 
-	if (strlen($task) == 0)
-	{
-		return false;
-	}
-
-	$sql = "UPDATE todolists SET `todo` = :t WHERE id = :id AND lists_id = :lid";
+	$sql = "UPDATE todolists SET `todo` = :t, `end_date` = :end_date, `start_date` = :start_date
+			 WHERE id = :id AND lists_id = :lid";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':t' => $task,
+		':start_date' => $start_date,
+		':end_date' => $end_date,
 		':id' => $id,
 		':lid' => $list_id));
 
