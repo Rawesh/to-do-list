@@ -43,14 +43,14 @@
 			<tr>
 
  		<?php foreach ($tasks as $task) { ?>
-			<td>
+			<td id="td">
 				<a id="task" href="<?=URL?>todo/edit/<?=$task['id']?>/<?=$list['id']?>" >
 					<?=$task['todo']?> - Status: <?=$task['status']?>  
-					<a id="delete" href="<?=URL?>todo/delete/<?=$task['id']?>/<?=$list['id']?>">
+				</a>
+				<a id="delete" href="<?=URL?>todo/delete/<?=$task['id']?>/<?=$list['id']?>">
 						<i class="fa fa-check" id="check" aria-hidden="true"></i>
 						|
 						<i class="fa fa-trash" id="trash" aria-hidden="true"></i>
-					</a>
 				</a>
 			</td>
 			<td id="date">Eind: <?=$task['end']?></td>

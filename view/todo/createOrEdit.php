@@ -11,11 +11,11 @@
 	<article>
 		<?php if (isset($task['todo'])) { ?>
 			
-			<h2>Wijzig taak</h2>
+			<h2>Uitlezen / Wijzig taak</h2>
 			<form id="form" action="<?=URL?>todo/editSave/<?=$list['id']?>" method="post">
 				<input type="hidden" name="id" value="<?=$task['id']?>">
 				<label>Naam taak</label>
-				<input type="text" name="todo" value="<?=$task['todo']?>">
+				<input type="text" maxlength="255" name="todo" value="<?=$task['todo']?>">
 
 				<label>Status</label>
 				<select name="status" value="<?=$task['status']?>">
@@ -36,7 +36,7 @@
 			<h2>Maak taak aan</h2>
 			<form id="form" action="<?=URL?>todo/createSave/<?=$list['id']?>" method="post">
 				<label>Taak</label>
-				<input type="text" name="todo">
+				<input type="text" maxlength="255" name="todo">
 				<label>Status</label>
 				<select name="status">
 					<option value="normaal">Normaal</option>

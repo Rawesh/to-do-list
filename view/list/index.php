@@ -22,7 +22,7 @@
 			<tr>
 
  		<?php foreach ($lists as $list) { ?>
-			<td>
+			<td id="td">
 				<a id="list" href="<?=URL?>list/edit/<?=$list['id']?>" >
 					<?=$list['listName']?>
 					<a id="delete" href="<?=URL?>list/delete/<?=$list['id']?>">
@@ -30,7 +30,7 @@
 					</a>
 				</a>
 			</td>
-			<td>
+			<td id="td">
 				Bekijk lijst
 				<a id="getIn" href="<?=URL?>list/getTasksByList/<?=$list['id']?>">
 					<i id="runList" class="fa fa-sign-in" id="trash" aria-hidden="true"></i>
