@@ -57,3 +57,9 @@ function delete($id, $list_id)
 		header("location:". URL . "error/index");
 }
 
+function getStatus($id, $status)
+{
+	render("todo/index", array("tasks" => getAllTasksByStatus($id, $status),
+								"list" => getList($id)));
+}
+

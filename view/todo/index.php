@@ -31,6 +31,14 @@
 			EindDatum (aflopend)
 		</a>
 
+		<a id="filterButton" href="<?=URL?>todo/getStatus/<?=$list['id']?>/<?='normaal'?>">
+			status (Normaal)
+		</a>
+
+		<a id="filterButton" href="<?=URL?>todo/getStatus/<?=$list['id']?>/<?='spoed'?>">
+			status (Spoed)
+		</a>
+
 		<table>
 			<tr>
 

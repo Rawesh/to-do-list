@@ -19,6 +19,27 @@
 	$db = null;
 }
 
+function getAllTasksByStatus($id, $status)
+{
+	$db = openDatabaseConnection();
+
+	$sql = 
+		"SELECT *, DATE_FORMAT(start_date, '%d-%m-%Y') as 'start' ,DATE_FORMAT(end_date, '%d-%m-%Y') as 'end'
+		 FROM todolists
+		 WHERE lists_id = :lid AND status = :status 
+		 ORDER BY 'todo'";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+			':status' => $status,
+			':lid' => $id));
+
+	return $query->fetchAll();
+
+	$db = null;
+
+}
+
  function sortTask($id, $columm, $sort)
  {
 	$db = openDatabaseConnection();
