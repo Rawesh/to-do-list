@@ -23,7 +23,8 @@ function createSave($id)
 {
 	if (!createTask($id))
 	{
-		render("error/index");
+		echo "<script type='text/javascript'>alert('Alle velden moeten ingevuld zijn.');</script>";	
+		render("todo/createOrEdit", array("list" => getList($id)));	
 		exit();
 	}
 
@@ -44,7 +45,9 @@ function editSave($list_id)
 		header("location:". URL . "list/getTasksByList/". $list_id);
 		exit();
 	}
-	header("location:". URL . "error/index");
+	
+	echo "<script type='text/javascript'>alert('Alle velden moeten ingevuld zijn.');</script>";	
+	render("todo/createOrEdit", array("list" => getList($id)));
 }
 
 function delete($id, $list_id)

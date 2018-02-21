@@ -5,7 +5,8 @@ function index()
 	render("error/login_error");
 }
 
-function setSaveError()
+function createError()
 {
-	render("error/save_error");
+	echo "<script type='text/javascript'>alert('Alle velden moeten ingevuld zijn.');</script>";
+	header("location:". URL . "todo/creatOrEdit");
 }
